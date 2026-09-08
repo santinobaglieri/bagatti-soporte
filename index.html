@@ -152,6 +152,27 @@ details[open] summary::after{transform:rotate(-135deg);top:30px}
 .tro b{display:block;font-weight:600;margin-bottom:2px}
 .tro span{color:var(--tx-2)}
 
+/* manual: gestos del boton y significado de las luces */
+.gest,.luz{margin:0;padding:0;list-style:none}
+.gest li,.luz li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.gest li:first-child,.luz li:first-child{border-top:0}
+.gest .g{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.06em;
+  color:var(--cyan);background:var(--cyan-soft);border-radius:999px;padding:5px 11px;
+  flex:none;align-self:flex-start;white-space:nowrap;min-width:92px;text-align:center}
+.gest b,.luz b{display:block;font-weight:600;font-size:14.5px;margin-bottom:2px}
+.gest span,.luz span{font-size:14px;color:var(--tx-2)}
+.luz .dot{margin-top:6px}
+.dot.roja{--led:#E5484D}
+.duo{display:flex;gap:4px;flex:none;margin-top:6px}
+.duo .dot{margin-top:0}
+.par{animation:par 1.3s steps(1,end) infinite}
+.par.b{animation-delay:.65s}
+@keyframes par{50%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){.par{animation:none}}
+.sub-t{font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:.16em;
+  color:var(--muted);margin:18px 0 6px}
+.blk .sub-t:first-of-type{margin-top:0}
+
 /* mayorista */
 .mayor{background:var(--navy);color:#fff;border-radius:18px;padding:26px 24px;
   box-shadow:var(--shadow)}
@@ -468,6 +489,41 @@ a.pcard:hover{transform:translateY(-2px);
             <p>Enganchá el micrófono en la ropa a la altura del pecho, unos 15 a 20 cm
               de la boca. Al aire libre, ponele el peluche.</p></div></li>
         </ol></div>
+    <div class="blk"><div class="t">EL BOTÓN DEL MICRÓFONO</div>
+        <ul class="gest">
+          <li><span class="g">1 toque</span><div>
+            <b>Silenciar</b>
+            <span>La luz pasa a parpadear. Tocá de nuevo para volver a hablar.</span></div></li>
+          <li><span class="g">2 toques</span><div>
+            <b>Eco (reverb)</b>
+            <span>Le agrega reverberación a la voz. Parpadea una vez en rojo y vuelve al verde.
+              Para hablar a cámara conviene tenerlo apagado: el eco queda grabado y después
+              no se saca.</span></div></li>
+          <li><span class="g">3 segundos</span><div>
+            <b>Encender o apagar</b>
+            <span>Mantené el botón apretado hasta que las luces se prendan o se apaguen.</span></div></li>
+        </ul></div>
+    <div class="blk"><div class="t">QUÉ TE DICEN LAS LUCES</div>
+        <div class="sub-t">EN EL MICRÓFONO</div>
+        <ul class="luz">
+          <li><i class="dot"></i><div><b>Verde fija</b>
+            <span>Vinculado con el receptor. Ya podés grabar.</span></div></li>
+          <li><span class="duo"><i class="dot par"></i><i class="dot roja par b"></i></span><div><b>Parpadean alternadas</b>
+            <span>Está buscando el receptor. Es lo normal apenas lo encendés.</span></div></li>
+          <li><i class="dot par"></i><div><b>Parpadea sola</b>
+            <span>Micrófono silenciado. Un toque al botón y vuelve.</span></div></li>
+          <li><i class="dot roja"></i><div><b>Roja fija</b>
+            <span>Cargando por el cable USB-C. Se apaga sola cuando termina.</span></div></li>
+          <li><i class="dot roja par"></i><div><b>Roja cada 10 segundos</b>
+            <span>Le queda poca batería.</span></div></li>
+        </ul>
+        <div class="sub-t">EN EL RECEPTOR</div>
+        <ul class="luz">
+          <li><i class="dot"></i><div><b>Fija</b>
+            <span>Vinculado con los micrófonos.</span></div></li>
+          <li><i class="dot par"></i><div><b>Parpadeo lento</b>
+            <span>Buscando los micrófonos. Encendelos si no lo hiciste.</span></div></li>
+        </ul></div>
     <div class="blk"><div class="t">SI ALGO NO FUNCIONA</div>
         <ul class="tro">
           <li><b>El celular no toma el micrófono</b><span>Fijate que la app de cámara tenga
@@ -476,6 +532,16 @@ a.pcard:hover{transform:translateY(-2px);
           <li><b>En iPhone no reconoce el receptor</b><span>El receptor es USB-C: en iPhone con
             puerto Lightning tenés que usar el adaptador incluido. Verificá que entre hasta
             el fondo y que la funda no haga palanca.</span></li>
+          <li><b>En Android no lo detecta</b><span>Varios Android traen apagado el modo OTG,
+            que es el que habilita los accesorios por USB. Buscá <b>OTG</b> en los ajustes del
+            teléfono y activalo. Algunos lo vuelven a apagar solos si no se usa por unos
+            minutos, así que revisalo antes de grabar.</span></li>
+          <li><b>La luz está verde pero no se escucha</b><span>Fijate si la luz parpadea en vez
+            de quedar fija: así queda cuando el micrófono está silenciado. Un toque al botón
+            y vuelve.</span></li>
+          <li><b>Se escucha con eco</b><span>Se activó el reverb con dos toques. Tocá dos veces
+            de nuevo para volver al sonido normal; si sigue igual, apagá y encendé el
+            micrófono.</span></li>
           <li><b>Se corta cuando me alejo</b><span>El alcance es de hasta 20 metros en línea
             directa. Paredes, cuerpos y otros equipos inalámbricos lo reducen.</span></li>
           <li><b>Se escucha el viento</b><span>Para exteriores usá el peluche. La esponja negra
