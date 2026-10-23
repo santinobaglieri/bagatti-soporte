@@ -302,7 +302,12 @@ a.pcard:hover{transform:translateY(-2px);
    quedaba de 350x132 con la foto cuadrada encogida contra el borde izquierdo. */
 @media (max-width:560px){
   .pcard{flex-direction:column;align-items:stretch;gap:16px}
-  .pcard .im{width:100%;height:auto;aspect-ratio:4/3;padding:14px}
+  .pcard .im{width:100%;height:auto;aspect-ratio:4/3;padding:14px;position:relative}
+  /* Safari no resuelve max-height:100% contra un alto que sale de aspect-ratio:
+     la foto crecía al ancho y se cortaba arriba y abajo. Posicionada, el 100%
+     se mide contra la caja, que sí tiene alto definido en todos los navegadores. */
+  .pcard .im img{position:absolute;top:14px;left:14px;width:calc(100% - 28px);
+    height:calc(100% - 28px);max-width:none;max-height:none}
   .pcard .ill{height:auto;max-height:88%}
 }
 .hero.sub{padding:20px 0 6px}
